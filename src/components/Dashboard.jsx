@@ -53,7 +53,7 @@ function HorizontalBar({ label, value, max, count, color, secondary }) {
         </div>
         <div className="text-right">
           <span className="text-sm font-semibold" style={{ color: '#e2e8f0' }}>
-            £{value.toFixed(2)}
+            ${value.toFixed(2)}
           </span>
           {secondary && (
             <span className="text-xs ml-2" style={{ color: '#6b7280' }}>{secondary}</span>
@@ -207,14 +207,14 @@ export default function Dashboard({ jerseys }) {
         <StatCard
           icon={DollarSign}
           label="Total Revenue"
-          value={`£${stats.totalRevenue.toFixed(2)}`}
+          value={`$${stats.totalRevenue.toFixed(2)}`}
           sub={`from ${stats.soldCount} sales`}
           color="#6c63ff"
         />
         <StatCard
           icon={TrendingUp}
           label="Total Profit"
-          value={`£${stats.totalProfit.toFixed(2)}`}
+          value={`$${stats.totalProfit.toFixed(2)}`}
           sub={`avg margin ${stats.avgMargin.toFixed(1)}%`}
           color="#22c55e"
           trend={stats.avgMargin}
@@ -222,14 +222,14 @@ export default function Dashboard({ jerseys }) {
         <StatCard
           icon={Package}
           label="Unsold Stock Value"
-          value={`£${stats.unsoldValue.toFixed(2)}`}
+          value={`$${stats.unsoldValue.toFixed(2)}`}
           sub={`${stats.inStockCount + stats.listedCount} items`}
           color="#f59e0b"
         />
         <StatCard
           icon={ShoppingBag}
           label="Listed Value"
-          value={`£${stats.totalListedValue.toFixed(2)}`}
+          value={`$${stats.totalListedValue.toFixed(2)}`}
           sub={`potential revenue`}
           color="#3b82f6"
         />
@@ -331,13 +331,13 @@ export default function Dashboard({ jerseys }) {
                     <div>
                       <p className="text-xs" style={{ color: '#6b7280' }}>Revenue</p>
                       <p className="text-base font-bold" style={{ color: '#e2e8f0' }}>
-                        £{revenue.toFixed(2)}
+                        ${revenue.toFixed(2)}
                       </p>
                     </div>
                     <div>
                       <p className="text-xs" style={{ color: '#6b7280' }}>Profit</p>
                       <p className="text-base font-bold" style={{ color: profit >= 0 ? '#22c55e' : '#ef4444' }}>
-                        £{profit.toFixed(2)}
+                        ${profit.toFixed(2)}
                       </p>
                     </div>
                   </div>
@@ -407,17 +407,17 @@ export default function Dashboard({ jerseys }) {
                       <span className="text-sm" style={{ color: '#94a3b8' }}>{j.platform}</span>
                     </td>
                     <td className="px-5 py-3">
-                      <span className="text-sm" style={{ color: '#94a3b8' }}>£{j.costPrice.toFixed(2)}</span>
+                      <span className="text-sm" style={{ color: '#94a3b8' }}>${j.costPrice.toFixed(2)}</span>
                     </td>
                     <td className="px-5 py-3">
-                      <span className="text-sm font-medium" style={{ color: '#e2e8f0' }}>£{j.salePrice.toFixed(2)}</span>
+                      <span className="text-sm font-medium" style={{ color: '#e2e8f0' }}>${j.salePrice.toFixed(2)}</span>
                     </td>
                     <td className="px-5 py-3">
                       <span
                         className="text-sm font-semibold"
                         style={{ color: j.profit >= 0 ? '#22c55e' : '#ef4444' }}
                       >
-                        {j.profit >= 0 ? '+' : ''}£{j.profit.toFixed(2)}
+                        {j.profit >= 0 ? '+' : ''}${j.profit.toFixed(2)}
                       </span>
                     </td>
                     <td className="px-5 py-3">

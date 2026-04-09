@@ -126,7 +126,7 @@ function JerseyForm({ initial, onSave, onCancel }) {
             {QUALITIES.map(q => <option key={q} value={q}>Grade {q}</option>)}
           </select>
         </InputField>
-        <InputField label="Cost Price (£)" required error={errors.costPrice}>
+        <InputField label="Cost Price ($)" required error={errors.costPrice}>
           <input
             className={inputClass}
             style={inputStyle}
@@ -138,7 +138,7 @@ function JerseyForm({ initial, onSave, onCancel }) {
             placeholder="0.00"
           />
         </InputField>
-        <InputField label="Sale Price (£)" required error={errors.salePrice}>
+        <InputField label="Sale Price ($)" required error={errors.salePrice}>
           <input
             className={inputClass}
             style={inputStyle}
@@ -237,10 +237,10 @@ function JerseyRow({ jersey, onEdit, onDelete, onGenerateListing }) {
       <td className="px-4 py-3">
         <div className="flex flex-col gap-0.5">
           <span className="text-sm font-medium" style={{ color: '#e2e8f0' }}>
-            £{jersey.salePrice.toFixed(2)}
+            ${jersey.salePrice.toFixed(2)}
           </span>
           <span className="text-xs" style={{ color: '#6b7280' }}>
-            cost £{jersey.costPrice.toFixed(2)}
+            cost ${jersey.costPrice.toFixed(2)}
           </span>
         </div>
       </td>
@@ -250,7 +250,7 @@ function JerseyRow({ jersey, onEdit, onDelete, onGenerateListing }) {
             className="text-sm font-semibold"
             style={{ color: profit >= 0 ? '#22c55e' : '#ef4444' }}
           >
-            {profit >= 0 ? '+' : ''}£{profit.toFixed(2)}
+            {profit >= 0 ? '+' : ''}${profit.toFixed(2)}
           </span>
           <span className="text-xs" style={{ color: '#6b7280' }}>{margin}% margin</span>
         </div>
