@@ -9,6 +9,8 @@ const TYPES = ['Home', 'Away', 'Third', 'GK', 'Special Edition']
 const QUALITIES = ['A', 'B']
 const PLATFORMS = ['Depop', 'Mercari', 'Poshmark', 'eBay', 'Vinted', 'StockX', 'Other']
 const STATUSES = ['In Stock', 'Listed', 'Sold']
+const PURCHASE_SOURCES = ['Amazon', 'eBay', 'Alibaba', 'AliExpress', 'DHgate', 'Local Market', 'Wholesale', 'Other']
+const PAYMENT_METHODS = ['Visa', 'Mastercard', 'Amex', 'PayPal', 'Apple Pay', 'Cash', 'Other']
 
 const STATUS_STYLES = {
   'In Stock': { bg: 'rgba(34,197,94,0.12)', color: '#22c55e', dot: '#22c55e' },
@@ -29,6 +31,10 @@ const EMPTY_FORM = {
   status: 'In Stock',
   notes: '',
   dateAdded: new Date().toISOString().split('T')[0],
+  purchaseSource: '',
+  purchaseDate: '',
+  deliveryDate: '',
+  paymentMethod: '',
 }
 
 function generateId() {
@@ -170,6 +176,47 @@ function JerseyForm({ initial, onSave, onCancel }) {
           placeholder="Any additional notes..."
         />
       </InputField>
+
+      {/* Purchase Details */}
+      <div
+        className="pt-2 pb-1 text-xs font-semibold uppercase tracking-wide"
+        style={{ color: '#6b7280', borderTop: '1px solid #2a2a3d' }}
+      >
+        Purchase Details
+      </div>
+      <div className="grid grid-cols-2 gap-4">
+        <InputField label="Purchased From">
+          <select className={inputClass} style={inputStyle} value={form.purchaseSource} onChange={set('purchaseSource')}>
+            <option value="">Select source...</option>
+            {PURCHASE_SOURCES.map(s => <option key={s} value={s}>{s}</option>)}
+          </select>
+        </InputField>
+        <InputField label="Payment Method">
+          <select className={inputClass} style={inputStyle} value={form.paymentMethod} onChange={set('paymentMethod')}>
+            <option value="">Select method...</option>
+            {PAYMENT_METHODS.map(m => <option key={m} value={m}>{m}</option>)}
+          </select>
+        </InputField>
+        <InputField label="Order Date">
+          <input
+            className={inputClass}
+            style={inputStyle}
+            type="date"
+            value={form.purchaseDate}
+            onChange={set('purchaseDate')}
+          />
+        </InputField>
+        <InputField label="Delivery Date">
+          <input
+            className={inputClass}
+            style={inputStyle}
+            type="date"
+            value={form.deliveryDate}
+            onChange={set('deliveryDate')}
+          />
+        </InputField>
+      </div>
+
       <div className="flex gap-3 pt-2">
         <button
           type="submit"

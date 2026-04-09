@@ -11,6 +11,7 @@ const TABS = [
 ]
 
 const STORAGE_KEY = 'mundial-vault-jerseys'
+const EXPENSES_KEY = 'mundial-vault-expenses'
 
 const SAMPLE_DATA = [
   {
@@ -108,26 +109,32 @@ const SAMPLE_DATA = [
 export default function App() {
   const [activeTab, setActiveTab] = useState('inventory')
   const [jerseys, setJerseys] = useState([])
+  const [expenses, setExpenses] = useState([])
   const [selectedJersey, setSelectedJersey] = useState(null)
 
   useEffect(() => {
     const stored = localStorage.getItem(STORAGE_KEY)
     if (stored) {
-      try {
-        setJerseys(JSON.parse(stored))
-      } catch {
-        setJerseys(SAMPLE_DATA)
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(SAMPLE_DATA))
-      }
+      try { setJerseys(JSON.parse(stored)) }
+      catch { setJerseys(SAMPLE_DATA); localStorage.setItem(STORAGE_KEY, JSON.stringify(SAMPLE_DATA)) }
     } else {
       setJerseys(SAMPLE_DATA)
       localStorage.setItem(STORAGE_KEY, JSON.stringify(SAMPLE_DATA))
+    }
+    const storedExp = localStorage.getItem(EXPENSES_KEY)
+    if (storedExp) {
+      try { setExpenses(JSON.parse(storedExp)) } catch { setExpenses([]) }
     }
   }, [])
 
   const saveJerseys = (updated) => {
     setJerseys(updated)
     localStorage.setItem(STORAGE_KEY, JSON.stringify(updated))
+  }
+
+  const saveExpenses = (updated) => {
+    setExpenses(updated)
+    localStorage.setItem(EXPENSES_KEY, JSON.stringify(updated))
   }
 
   const handleSelectForListing = (jersey) => {
@@ -208,7 +215,7 @@ export default function App() {
           />
         )}
         {activeTab === 'dashboard' && (
-          <Dashboard jerseys={jerseys} />
+          <Dashboard jerseys={jerseys} expenses={expenses} onSaveExpenses={saveExpenses} />
         )}
       </main>
     </div>
