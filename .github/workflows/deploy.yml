@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - claude/mundial-vault-inventory-dakXz
 
 permissions:
   contents: read
