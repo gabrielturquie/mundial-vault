@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react'
 import InventoryTracker from './components/InventoryTracker.jsx'
 import ListingGenerator from './components/ListingGenerator.jsx'
 import Dashboard from './components/Dashboard.jsx'
-import { LayoutGrid, Tag, BarChart3, Vault } from 'lucide-react'
+import Storefront from './components/Storefront.jsx'
+import { LayoutGrid, Tag, BarChart3, Store, Vault } from 'lucide-react'
 
 const TABS = [
+  { id: 'shop', label: 'Shop', icon: Store },
   { id: 'inventory', label: 'Inventory', icon: LayoutGrid },
   { id: 'listing', label: 'Listing Generator', icon: Tag },
   { id: 'dashboard', label: 'Dashboard', icon: BarChart3 },
@@ -12,6 +14,7 @@ const TABS = [
 
 const STORAGE_KEY = 'mundial-vault-jerseys'
 const EXPENSES_KEY = 'mundial-vault-expenses'
+const CART_KEY = 'mundial-vault-cart'
 
 const SAMPLE_DATA = [
   {
@@ -107,9 +110,10 @@ const SAMPLE_DATA = [
 ]
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState('inventory')
+  const [activeTab, setActiveTab] = useState('shop')
   const [jerseys, setJerseys] = useState([])
   const [expenses, setExpenses] = useState([])
+  const [cart, setCart] = useState([])
   const [selectedJersey, setSelectedJersey] = useState(null)
 
   useEffect(() => {
@@ -125,7 +129,16 @@ export default function App() {
     if (storedExp) {
       try { setExpenses(JSON.parse(storedExp)) } catch { setExpenses([]) }
     }
+    const storedCart = localStorage.getItem(CART_KEY)
+    if (storedCart) {
+      try { setCart(JSON.parse(storedCart)) } catch { setCart([]) }
+    }
   }, [])
+
+  const saveCart = (updated) => {
+    setCart(updated)
+    localStorage.setItem(CART_KEY, JSON.stringify(updated))
+  }
 
   const saveJerseys = (updated) => {
     setJerseys(updated)
@@ -201,6 +214,9 @@ export default function App() {
 
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 py-8">
+        {activeTab === 'shop' && (
+          <Storefront cart={cart} onSaveCart={saveCart} />
+        )}
         {activeTab === 'inventory' && (
           <InventoryTracker
             jerseys={jerseys}
