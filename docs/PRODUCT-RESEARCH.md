@@ -1,5 +1,32 @@
 # Product Research — July 2026 (real platform data)
 
+## UPDATE (round 2): filtered by the 4 rules
+
+Rules: solves a painful problem · trending now · not oversaturated · not
+available in retail stores. This kills the earlier tire inflator pick
+(Walmart sells one for $24) and the neck fan (>60% saturated, in stores).
+
+Survivors, with sourced data:
+
+| Product | Pain it solves | Cost → Sell | Margin | Trend/saturation evidence |
+|---|---|---|---|---|
+| **Acupressure mat + pillow set** | Back pain, stress, bad sleep | $12–18 → $45–65 | 55–65% | Search volume **+180% since Q3 2025**; wellness niche flagged low-saturation; not in mainstream retail |
+| **Ergonomic travel pillow (wrap-style)** | Neck pain on flights/road trips | ~$10–15 → $40–50 | ~60% | Only **580 competitors in Meta Ads Library**; one seller scaling with 44 ad variations (validated but early); July = record travel spend (~$2,800/person); stores only carry the junk U-pillows |
+| **Smart posture corrector (vibration)** | Tech-neck / remote-work slouch | $8–12 → $34–49 | 60–70% | Recovery/stress-relief category spiking in 2026; smart version not in stores | 
+| **Infrared heating pad (app-controlled)** | Chronic back/period pain | $15–22 → $55–79 | 50–60% | App-timer models convert 40% higher; drugstores only carry dumb heating pads |
+
+**Verdict: acupressure mat set as the main product, travel pillow as the
+July fast-test.** The mat is evergreen (pain doesn't have a season), has the
+strongest growth signal (+180%), a visceral TikTok demo (the first-time
+face + the "1000 spikes" close-up), and nobody impulse-finds it at Target.
+The travel pillow is the quicker flip: demand peaks right now and the
+Meta-ads data proves it converts while competition is still thin.
+
+Caution on health claims: say "helps me relax / eases my tension" (personal
+experience framing) — never "treats/cures" anything, or ad accounts get
+banned.
+
+
 Researched July 20, 2026 from AutoDS monthly winner lists, CJdropshipping,
 Doba, Copyfy, SourcinBox, and supplier pricing data. Numbers below are from
 those sources, not guesses — verify against live listings before committing
